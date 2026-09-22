@@ -1,4 +1,9 @@
 post v0.4.0:
+	- Add a "Look up and highlight missing meta-bugs" preference (off
+	by default) to the addon settings, which controls whether
+	SpiderMonkey bugs not blocking the SpiderMonkey meta-bug get
+	highlighted.
+
 	- Add crash-stat API Token to perform queries to find similar
 	crashes when signatures are listed in a Bug description. This
 	would be useful in case a similar bug has already been fixed, or

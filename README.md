@@ -6,13 +6,12 @@ This addon improves [bugzilla](https://bugzilla.mozilla.org) user experience wit
 additional information to help with the triage and resolution efforts.
 
 When installed and enabled, this addon will:
- - Building a transitive list of bugs blocked.
  - Highlight in red fields which have to be set when triaging.
    * Priorities should be set.
    * Severity should be set to N/A for non-defects, and to some value for defects.
-   * Block list of bug should transitively block [Bug SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=spidermonkey).
  - Replace file names of source files by links to [searchfox](https://searchfox.mozilla.org) when possible.
  - Query [crash-stats](https://crash-stats.mozilla.org/) to display bugs with similar signatures.
+ - (optionally) Build a transitive list of bugs blocked, and highlight if they don't transitively block [Bug SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=spidermonkey).
 
 This addon is available at https://addons.mozilla.org/firefox/addon/meta-bugs/
 

@@ -434,6 +434,14 @@ async function insert_similar_crashes_references() {
 // -------------------------------------------------------------------
 // Mutate the page.
 
+// Feature toggles are stored under the "features" key. Features are disabled
+// unless explicitly enabled by the user.
+async function is_feature_enabled(name) {
+  let { features } = await browser.storage.local.get("features");
+  features = features || {};
+  return features[name] === true;
+}
+
 function add_border_highlight(id) {
   let dom = document.getElementById(id);
   dom.style = "border: 2px dashed red;";
@@ -447,7 +455,7 @@ async function insert_meta_references() {
   let html = meta_references(bugs);
   dom.insertAdjacentElement('afterend', html);
 
-  if (isSpiderMonkeyIsland()) {
+  if (await is_feature_enabled("highlightMissingMetabugs") && isSpiderMonkeyIsland()) {
     // Highlight the blocks section if this bug is part of the JavaScript
     // component but does not block "Bug SpiderMonkey".
     let is_rooted = bugs.reduce((res, b) => res || b.alias == "SpiderMonkey", false);

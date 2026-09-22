@@ -3,7 +3,7 @@ const Options = {
     console.log("Initting Settings page");
 
     console.debug("Populating form");
-    let services = ["bugzilla", "crash-stat"];
+    let services = ["bugzilla", "crash-stats", "features"];
     await Promise.all(services.map(
       serviceType => this.initService(serviceType)
     ));
@@ -25,7 +25,11 @@ const Options = {
     for (let key of Object.keys(settings)) {
       try {
         let field = domSettings.querySelector(`[data-setting='${key}']`);
-        field.value = settings[key];
+        if (field.type === "checkbox") {
+          field.checked = settings[key];
+        } else {
+          field.value = settings[key];
+        }
       } catch (err) {
         // Stale fields which are not listed in the DOM are removed.
         delete settings[key];
@@ -44,9 +48,13 @@ const Options = {
     case "password":
       newValue = event.target.value;
       break;
+    case "checkbox":
+      newValue = event.target.checked;
+      break;
     }
 
-    let settings = await browser.storage.local.get(serviceType);
+    let { [serviceType]: settings } = await browser.storage.local.get(serviceType);
+    settings = settings || {};
     if (newValue !== undefined) {
       settings[changedSetting] = newValue;
     } else {
