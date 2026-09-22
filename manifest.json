@@ -14,6 +14,15 @@
     "url": "https://github.com/nbp/meta-bugs"
   },
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{cf8f8633-77c5-4a0c-88fb-dfe07380b14d}",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
   "permissions": [
     "storage",
     "https://bugzilla.mozilla.org/show_bug.cgi?*",

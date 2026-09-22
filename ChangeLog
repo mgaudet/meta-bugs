@@ -1,4 +1,7 @@
 post v0.4.0:
+	- Declare the addon ID and an empty data collection policy in the
+	manifest, as required by newer versions of addons.mozilla.org.
+
 	- Add a "Look up and highlight missing meta-bugs" preference (off
 	by default) to the addon settings, which controls whether
 	SpiderMonkey bugs not blocking the SpiderMonkey meta-bug get
