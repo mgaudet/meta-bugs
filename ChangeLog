@@ -1,4 +1,6 @@
-post v0.4.0:
+post v0.5:
+
+v0.5:
 	- Declare the addon ID and an empty data collection policy in the
 	manifest, as required by newer versions of addons.mozilla.org.
 
